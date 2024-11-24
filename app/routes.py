@@ -504,33 +504,26 @@ def get_assets_from_portfolio(id):
 def fetch_asset_price(asset_name):
     cache_key = f"asset_price_{asset_name}"
 
-    # Check if price is already cached
     cached_price = cache.get(cache_key)
     if cached_price:
         return jsonify(asset_name=asset_name, price=cached_price), 200
 
-    # Fetch the price of the asset from the third-party API
     price = get_assets_from_portfolio(asset_name)
     
     if price:
-        # Cache the price for 1 hour
-        cache.set(cache_key, price, timeout=3600)  # 3600 seconds = 1 hour
+        cache.set(cache_key, price, timeout=3600)  
 
-        # Fetch the asset from the database using the asset_name
         asset = Asset.query.filter_by(name=asset_name).first()
         
-        # If the asset exists in the database, store the price history
         if asset:
             today = datetime.utcnow().date()
             existing_entry = PriceHistory.query.filter_by(asset_id=asset.id, date=today).first()
 
             if not existing_entry:
-                # Add the price history if it doesn't already exist for today
                 new_entry = PriceHistory(asset_id=asset.id, date=today, price=price)
                 db.session.add(new_entry)
                 db.session.commit()
 
-        # Return the price of the asset
         return jsonify(asset_name=asset_name, price=price), 200
 
     return jsonify(message="Asset price not found from external API"), 404
