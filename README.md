@@ -16,8 +16,8 @@ Make sure you have the following installed on your machine:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/financial-management-api.git
-   cd financial-management-api
+   [git clone https://github.com/your-username/financial-management-api.git](https://github.com/jeffprakash/khazana_test.git)
+   cd khazana_test
 
 Create a virtual environment:
   
@@ -28,6 +28,11 @@ Install the dependencies:
 
     ```bash  
     pip install -r requirements.txt
+
+Run the flask
+  
+      ```bash  
+      flask run
 
 
 # Financial Management API - Overview of API Design
