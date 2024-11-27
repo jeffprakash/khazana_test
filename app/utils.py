@@ -33,3 +33,7 @@ def update_price_history(asset_id, price):
         db.session.commit()
 
 
+
+
+
+

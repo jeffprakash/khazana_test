@@ -16,6 +16,13 @@ cache = Cache()
 api_blueprint = Blueprint('api', __name__)
 
 
+@api_blueprint.route('/', methods=['GET'])
+def home():
+    return jsonify(message="Welcome to the Financial Planning API")
+
+
+
+
 # Admin Route
 @api_blueprint.route('/admin', methods=['GET'])
 @jwt_required()
