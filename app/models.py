@@ -32,6 +32,10 @@ class Portfolio(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     name = db.Column(db.String(120), nullable=False)
 
+
+    user = db.relationship('User', backref=db.backref('portfolios', lazy=True, cascade="all, delete"))
+
+
 class Asset(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     portfolio_id = db.Column(db.Integer, db.ForeignKey('portfolio.id'), nullable=False)

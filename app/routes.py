@@ -331,6 +331,10 @@ from flasgger import swag_from
 })
 def post_portfolio():
     user_id = get_jwt_identity()
+
+    if 'name' not in data or not isinstance(data['name'], str):
+        return jsonify(message="Invalid data. 'name' is required and should be a string."), 400
+
     if request.method == 'POST':
         data = request.json
         new_portfolio = Portfolio(user_id=user_id, name=data['name'])
