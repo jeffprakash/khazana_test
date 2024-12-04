@@ -43,8 +43,7 @@ This section outlines the key endpoints, request/response formats, and the desig
 
 The base URL for the API is:
 
-https://api.example.com/
-
+ https://69e7-111-92-126-242.ngrok-free.app/
 
 
 # Financial Management Database Schema
@@ -167,7 +166,7 @@ The following is a representation of the relationships in the database schema:
 
 ##  API DOCUMENTATION
 
-https://api.example.com/apidocs
+ https://69e7-111-92-126-242.ngrok-free.app/apidocs
 
   use /apidocs
 
