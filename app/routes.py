@@ -4,13 +4,11 @@ from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identi
 from .models import User, Goal, Portfolio, Asset, PriceHistory
 from . import db, bcrypt, cache
 from .rate_limiters import user_rate_limit, ip_rate_limit
-from flask_caching import Cache
 from flasgger import swag_from
 
 from .admin_decorator import admin_required
 
 
-cache = Cache()
 
 
 api_blueprint = Blueprint('api', __name__)
